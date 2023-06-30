@@ -75,73 +75,39 @@ public class PremiumController {
 
 	@PostMapping("/addVehicleDetails")
 	public void addVehicleDetails(@RequestBody VehicleDetails vehicleDetails) {
-		premiumService.save(vehicleDetails); 
+			premiumService.save(vehicleDetails);
 	}
-
 	@PutMapping(value="/updateproducts/{id}/{description}/{name}")
-
 	public Products updateStatus(@PathVariable("id") int id, @PathVariable("description") String description, @PathVariable("name") String name) {
-
 		Products products =  premiumService.updateStatus(id, description , name);
-
 		return products;
-
 	}
 
 	@PutMapping(value="/updateplans")
-
 	public Plans updatePlans(@RequestBody Plans plans) {
-
 		Plans plans1 =  premiumService.updatePlans(plans);
-
 		return plans1;
-
 	}
 
 	@PutMapping(value="/updaterules")
-
 	public Rule updateRules(@RequestBody Rule rules) {
-
 		Rule rules1 =  premiumService.updateRules(rules);
-
 		return rules1;
-
-
-
 	}
 	
 	@DeleteMapping(value="/deleteplanbyid/{id}")
-
     public Plans deleteplanbyid(@PathVariable("id") int id) {
-
         Plans plans =  premiumService.deletePlansById(id);
-
         return plans;
-
     }
-
     @DeleteMapping(value="/deleteproductsbyid/{id}")
-
     public Products deleteproductsbyid(@PathVariable("id") int id) {
-
         Products products =  premiumService.deleteProductsById(id);
-
         return products;
-
     }
-
-    
-
     @DeleteMapping(value="/deleterulesbyid/{id}")
-
     public Rule deleterulesbyid(@PathVariable("id") int id) {
-
         Rule rules =  premiumService.deleteRulesById(id);
-
-        return rules;
-
+       return rules;
     }
-
-
-
 }
