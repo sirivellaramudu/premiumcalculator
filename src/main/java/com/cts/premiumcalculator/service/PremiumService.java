@@ -62,8 +62,23 @@ public class PremiumService {
 		return premiumRepository.save(products);
 	}
 
+	public Rule save(Rule rule) {
+		return rulesRepository.save(rule);
+	}
+
+	public HealthDetails save(HealthDetails healthDetails) {
+		return healthDetailsRepository.save(healthDetails);
+
+	}
+
+	public VehicleDetails save(VehicleDetails vehicleDetails) {
+		return vehicleDetailsRepository.save(vehicleDetails);
+
+	}
 
 	public Products updateStatus(int id, String description, String name) {
+
+		// TODO Auto-generated method stub
 
 		Products products = premiumRepository.findById(id).orElse(null);
 
@@ -87,6 +102,14 @@ public class PremiumService {
 
 	public Plans updatePlans(Plans plans1) {
 
+		// TODO Auto-generated method stub
+
+
+
+
+
+
+
 		Plans plans = planRepository.findById(plans1.getPlan_id()).orElse(null);
 
 		if(plans!=null) {
@@ -99,7 +122,7 @@ public class PremiumService {
 
 			plans1.setPlan_end_date(plans1.getPlan_end_date());
 
-			plans1.setMonthly_due_date(plans1.getMonthly_due_date());
+			plans1.setMonthy_due_date(plans1.getMonthy_due_date());
 
 			plans1.setPremium(plans1.getPremium());
 
@@ -133,8 +156,69 @@ public class PremiumService {
 
 		}
 
+
 		return null;
 
 	}
+	
+	public Plans deletePlansById(int id) {
+
+        // TODO Auto-generated method stub
+
+        Plans plans = planRepository.findById(id).orElse(null);
+
+        if(plans!=null) {
+
+            planRepository.delete(plans);
+
+            return plans;
+
+        }
+
+        
+
+        return null;
+
+    }
+
+ 
+
+    public Products deleteProductsById(int id) {
+
+        // TODO Auto-generated method stub
+
+        Products products = premiumRepository.findById(id).orElse(null);
+
+        if(products!=null) {
+
+            premiumRepository.delete(products);
+
+            return products;
+
+        }
+
+        return null;
+
+    }
+
+ 
+
+    public Rule deleteRulesById(int id) {
+
+        // TODO Auto-generated method stub
+
+        Rule rules = rulesRepository.findById(id).orElse(null);
+
+        if(rules!=null) {
+
+            rulesRepository.delete(rules);
+
+            return rules;
+
+        }
+
+        return null;
+
+    }
 
 }
