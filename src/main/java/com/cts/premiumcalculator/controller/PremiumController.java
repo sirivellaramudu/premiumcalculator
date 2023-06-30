@@ -3,6 +3,7 @@ package com.cts.premiumcalculator.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -62,7 +63,23 @@ public class PremiumController {
 		premiumService.save(products); 
 	}
 
+	@PostMapping("/addRules")
+	public void addRules(@RequestBody Rule rule) {
+		premiumService.save(rule); 
+	}
+
+	@PostMapping("/addHealthDetails")
+	public void addHealthDetails(@RequestBody HealthDetails healthDetails) {
+		premiumService.save(healthDetails); 
+	}
+
+	@PostMapping("/addVehicleDetails")
+	public void addVehicleDetails(@RequestBody VehicleDetails vehicleDetails) {
+		premiumService.save(vehicleDetails); 
+	}
+
 	@PutMapping(value="/updateproducts/{id}/{description}/{name}")
+
 	public Products updateStatus(@PathVariable("id") int id, @PathVariable("description") String description, @PathVariable("name") String name) {
 
 		Products products =  premiumService.updateStatus(id, description , name);
@@ -72,6 +89,7 @@ public class PremiumController {
 	}
 
 	@PutMapping(value="/updateplans")
+
 	public Plans updatePlans(@RequestBody Plans plans) {
 
 		Plans plans1 =  premiumService.updatePlans(plans);
@@ -81,6 +99,7 @@ public class PremiumController {
 	}
 
 	@PutMapping(value="/updaterules")
+
 	public Rule updateRules(@RequestBody Rule rules) {
 
 		Rule rules1 =  premiumService.updateRules(rules);
@@ -90,4 +109,39 @@ public class PremiumController {
 
 
 	}
+	
+	@DeleteMapping(value="/deleteplanbyid/{id}")
+
+    public Plans deleteplanbyid(@PathVariable("id") int id) {
+
+        Plans plans =  premiumService.deletePlansById(id);
+
+        return plans;
+
+    }
+
+    @DeleteMapping(value="/deleteproductsbyid/{id}")
+
+    public Products deleteproductsbyid(@PathVariable("id") int id) {
+
+        Products products =  premiumService.deleteProductsById(id);
+
+        return products;
+
+    }
+
+    
+
+    @DeleteMapping(value="/deleterulesbyid/{id}")
+
+    public Rule deleterulesbyid(@PathVariable("id") int id) {
+
+        Rule rules =  premiumService.deleteRulesById(id);
+
+        return rules;
+
+    }
+
+
+
 }
