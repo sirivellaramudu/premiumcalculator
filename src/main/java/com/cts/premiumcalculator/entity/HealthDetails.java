@@ -1,16 +1,19 @@
 package com.cts.premiumcalculator.entity;
 
 import java.util.Date;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 @Data
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
+@Table
 public class HealthDetails {
 	@Id
 	private String name ;
@@ -22,5 +25,8 @@ public class HealthDetails {
 	private float height; 
 	private float weight;  
 	private int bpm;
+	@OneToMany(mappedBy = "healthdetails", cascade = CascadeType.ALL)
+	@JsonIgnore
+	private List<Plans> plans;
 
 }

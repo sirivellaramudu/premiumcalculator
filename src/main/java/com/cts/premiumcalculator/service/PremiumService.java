@@ -36,7 +36,7 @@ public class PremiumService {
 
 
 	public List<Products> getAllProducts() {
-		return premiumRepository.findAll();
+		return (List<Products>) premiumRepository.findAll();
 	}
 
 	public List<Plans> getAllPlans() {
@@ -122,7 +122,7 @@ public class PremiumService {
 
 			plans1.setPlan_end_date(plans1.getPlan_end_date());
 
-			plans1.setMonthy_due_date(plans1.getMonthy_due_date());
+			plans1.setMonthly_due_date(plans1.getMonthly_due_date());
 
 			plans1.setPremium(plans1.getPremium());
 
